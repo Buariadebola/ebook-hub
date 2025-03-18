@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ebookgenre</title>
+	<style>
+		.genre-body{
+	margin: 0;
+	background-image: url('images/ebook.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+
+}
+.genre-page{
+	width: 100%;
+}
+.filter-options input[type="radio"]{
+	display: none;
+}
+.filter-options{
+	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+	justify-content: space-between;
+	padding: 10px;
+}
+.filter-sort-container{
+	margin-top: 50px;
+	width: 99%;
+	background-color: #fff0cb;
+	border: 2px solid #363146;
+	display: flex;
+}
+.fiction-container{
+	width: 49%;
+}
+.non-fiction-container{
+	width: 28%;
+	padding: 0;
+	margin: 0;
+}
+.others-container{
+	width: 23%;
+}
+
+ h2{
+ 	font-family: arial black;
+	text-align: center;
+	font-size: 22px;
+}
+nav{
+	position: fixed;
+	overflow: hidden;
+	z-index: 2;
+	top: 0;
+	margin: 0 auto;
+	width: 15%;
+	height: 11px;
+	padding-top: 2px;
+	text-align: center;
+	background-color: rgb(195, 0, 255);
+	border-radius: 0 0 10px 10px;
+	font-family: arial;
+	transition: 0.5s ;
+	
+}
+nav a{
+	display: none;
+}
+nav:hover {
+	background-color: #363146;
+	width: 100%;
+	height: 40px;
+	border-radius: 0 0 0 0;
+	padding-top: 20px;
+	justify-content:space-between;
+}
+nav:hover a{
+	font-size: 16px;
+	display: inline;
+	text-decoration: none;
+	color: white;
+	margin-right: 100px;
+	transition: 0.5s ease-in-out;
+}
+nav:hover p{
+	display: none;
+}
+@media only screen and (max-width:768px) {
+	nav:hover{
+		text-align: center;
+	}
+	nav:hover a{
+		margin-right: 40px;
+	}
+}
+@media only screen and (max-width:420px) {
+	nav:hover a{
+		margin-right: 20px;
+		font-size: 12px;
+	}
+}
+nav p{
+	font-size: 10px;
+	margin-top: 0;
+}
+nav:hover a:hover {
+	font-size: 14px;
+	color: #1abc9c;
+}
+.ebook-grid-items {
+	position: relative;
+	background-color: floralwhite;
+	border: 2px solid #363146;
+	margin: 0 auto;
+	padding: 20px;
+	width: 70%;
+	transition: 0.4s ease-in-out;
+}
+.ebook-grid-items:hover {
+	background-color: rgb(255, 255, 255);
+	padding: 15px;
+	border: 1px solid #363146;
+}
+.ebook-grid-items img {
+	width: 90%;
+	max-height: 200px;
+	object-fit: cover;
+	border-radius: 10px 10px 0 0;
+}
+.ebook-grid-items p{
+	margin: 0;
+	padding: 0;
+	color:#363146;
+	text-align: left;
+	font-family: arial;
+}
+.ebook-grid-items h2{
+	margin: 0;
+	padding: 0;
+	color: #363146;
+	text-align: left;
+	font-size: 20px;
+	font-family: arial;
+}
+.ebook-grid{
+	padding-top: 40px;
+	width: 95%;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	grid-gap: 10px;
+}
+@media only screen and (max-width:768px) {
+	.ebook-grid{
+		grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+	}
+	.ebook-grid-items h2{
+		font-size: 17px;
+	}
+	.ebook-grid-items:hover h2{
+		font-size: 15px;
+	}
+	.ebook-grid-items:hover p{
+		font-size: 13px;
+	}
+	.ebook-grid-items:hover button{
+		font-size: 12px;
+	}
+}
+.ebook-grid-items button{
+	display: inline;
+	background-color: #363146;
+	color: white;
+	font-size: 12px;
+}
+.read-button{
+	position: absolute;
+	bottom: 10px;
+	left: 5%;
+}
+.download-button{
+	position: absolute;
+	bottom: 10px;
+	right: 5%;
+}
+.filter-options label{
+	padding: 5px 10px 5px 10px;
+	text-align: center;
+	border: 1px solid black;
+	position: relative;
+	background-color: #1abc9c;
+	z-index: 1;
+}
+.filter-options label::after{
+	content: '';
+	position: absolute;
+	background-color: rgb(195, 0, 255);
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	transition: 0.4s ease-in-out;
+}
+.filter-options label:hover::after{
+	height: 0%;
+}
+nav img{
+	color: white;
+	width: 10px;
+	height: 10px;
+}
+@media only screen and (max-width:768px) {
+	.filter-options{
+	grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+	}
+	.filter-sort-container{
+		display: none;
+	}
+	.filter-options label{
+		font-size: 12px;
+		padding: 5px 10px 5px 10px;
+	}
+}
+.sidebar{
+	padding: 100px 10px 0 10px;
+	z-index: 1;
+	position: fixed;
+	background-color: rgb(54, 54, 54);
+	top:0;
+	right: 0;
+	height: 100%;
+	width: 35%;
+	display: none;
+}
+@media only screen and (max-width:768px) {
+	.fiction-dropdown{
+		display: none;
+	}
+	.non-fiction-dropdown{
+		display: none;
+	}
+	.others-dropdown{
+		display: none;
+	}
+	.filter-options input{
+		display: flex;
+		margin: 0 auto;
+	}
+
+	.sidebar{
+	display: block;
+	right: -40%;
+	transition: 1s ease-in-out;
+	}
+	.sidebar button{
+		padding: 10px 0 10px 0;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		width: 75%;
+		height: 30px;
+		display: flex;
+		margin: 0 auto;
+		background-color: blue;
+		color: white;
+		border: 0;
+	}
+	.sidebar.show{
+		right: 0;
+	}
+}
+#menu-button{
+	display: none;
+}
+@media only screen and (max-width:768px) {
+	#menu-button{
+		z-index: 1;
+		padding: 0;
+		display: block;
+		position: absolute;
+		top: 5px;
+		right: 5px;
+		width: 35px;
+	}
+	#menu-button img{
+		width: 32px;
+	}
+}
+	</style>
+</head>
+<nav>
+	<a href="home.html">HOME</a>
+	<a href="blog.html">LATEST</a>
+	<a href="profile.html">MY PROFILE</a>
+	<p><img src="images/down.png" alt=""></p>
+</nav>
+<button id="menu-button"><img src="images/menu1.png"></button>
+<body class="genre-body">
+	<div class="genre-page">
+		<div class="filter-sort-container">
+			<div class="fiction-container">
+				<h2>Fiction</h2>
+				<div class="filter-options">
+					<label>
+						<input type="radio" name="genre" value="romance">Romance
+					</label>
+					<label>
+						<input type="radio" name="genre" value="mystery">Mystery
+					</label>
+					<label>
+						<input type="radio" name="genre" value="triller">Triller
+					</label>
+					<label>
+						<input type="radio" name="genre" value="science-fiction">Sci-Fi
+					</label>
+					<label>
+						<input type="radio" name="genre" value="adventure">Adventure
+					</label>
+					<label>
+						<input type="radio" name="genre" value="horror">Horror
+					</label>
+					<label>
+						<input type="radio" name="genre" value="fantasy">fantasy
+					</label>
+					<label>
+						<input type="radio" name="genre" value="classic">classic
+					</label>
+				</div>
+			</div>
+			<div class="non-fiction-container">
+				<h2>Non-fiction</h2>
+				<div class="filter-options">
+					<label>
+						<input type="radio" name="genre" value="biography">Biography
+					</label>
+					<label>
+						<input type="radio" name="genre" value="history">History
+					</label>
+					<label>
+						<input type="radio" name="genre" value="science">Science
+					</label>
+					<label>
+						<input type="radio" name="genre" value="business">business
+					</label>
+				</div>
+			</div>
+			<div class="others-container">
+				<h2>Others</h2>
+				<div class="filter-options">
+					<label>
+						<input type="radio" name="genre" value="poetry">poetry
+					</label>
+					<label>
+						<input type="radio" name="genre" value="comic">comic
+					</label>
+					<label>
+						<input type="radio" name="genre" value="drama">drama
+					</label>
+					<label>
+						<input type="radio" name="genre" value="others">others
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="sidebar">
+			<button class="fiction-button">Fiction</button>
+				<div class="fiction-dropdown">
+					<div class="filter-options">
+						<label>
+							<input type="radio" name="genre" value="romance">Romance
+						</label>
+						<label>
+							<input type="radio" name="genre" value="mystery">Mystery
+						</label>
+						<label>
+							<input type="radio" name="genre" value="triller">Triller
+						</label>
+						<label>
+							<input type="radio" name="genre" value="science-fiction">Sci-Fi
+						</label>
+						<label>
+							<input type="radio" name="genre" value="adventure">Adventure
+						</label>
+						<label>
+							<input type="radio" name="genre" value="horror">Horror
+						</label>
+						<label>
+							<input type="radio" name="genre" value="fantasy">fantasy
+						</label>
+						<label>
+							<input type="radio" name="genre" value="classic">classic
+						</label>
+					</div>
+				</div>
+				<br>
+				<br>
+			<button class="non-fiction-button">Non-fiction</button>
+			<div class="non-fiction-dropdown">
+				<div class="filter-options">
+					<label>
+						<input type="radio" name="genre" value="biography">Biography
+					</label>
+					<label>
+						<input type="radio" name="genre" value="history">History
+					</label>
+					<label>
+						<input type="radio" name="genre" value="science">Science
+					</label>
+					<label>
+						<input type="radio" name="genre" value="business">business
+					</label>
+				</div>
+			</div>
+			<br>
+			<br>
+			<button class="others-button">others</button>
+			<div class="others-dropdown">
+				<div class="filter-options">
+					<label>
+						<input type="radio" name="genre" value="poetry">poetry
+					</label>
+					<label>
+						<input type="radio" name="genre" value="comic">comic
+					</label>
+					<label>
+						<input type="radio" name="genre" value="drama">drama
+					</label>
+					<label>
+						<input type="radio" name="genre" value="others">others
+					</label>
+				</div>
+			</div>
+		</div>
+		<div class="ebook-grid">
+			<div class="ebook-grid-items">
+			<img src="images/p&p.jpeg" alt="blog post image">
+			<h2 class="title">Pride and Prejudice</h2>
+			<hr>
+			<p class="genre">romance</p>
+			<hr>
+			<p class="author">Jane Austen</p>
+			<br>
+			<button class="read-button">Read</button>
+			<button class="download-button">Download</button>
+		</div>
+		<div class="ebook-grid-items">
+		<img src="images/TKAM.jpeg" alt="book 2">
+			<h2 class="title">To kill a Mockingbird</h2>
+			<hr>
+			<p class="genre">classic</p>
+			<hr>
+			<p class="author">Harper Lee</p>
+			<br>
+			<button class="read-button">Read</button>
+			<button class="download-button">Download</button>
+		</div>
+			<div class="ebook-grid-items">
+		<img src="images/TLOTR.jpeg" alt="book 3">
+			<h2 class="title">The Lord of the Rings</h2>
+			<hr>
+			<p class="genre">fantasy</p>
+			<hr>
+			<p class="author">J.R.R. Tolkien</p>
+			<br>
+			<button class="read-button">Read</button>
+			<button class="download-button">Download</button>
+			</div>
+			<div class="ebook-grid-items">
+		<img src="images/THG.jpeg" alt="book 4">
+			<h2 class="title">The Hungary Games</h2>
+			<hr>
+			<p class="genre">others</p>
+			<hr>
+			<p class="author">Suzanne Collins</p>
+			<br>
+			<button class="read-button">Read</button>
+			<button class="download-button">Download</button>
+		</div>
+			<div class="ebook-grid-items">
+		<img src="images/TGG.jpg" alt="book 5">
+			<h2 class="title">The Great Gatsby</h2>
+			<hr>
+			<p class="genre">classic</p>
+			<hr>
+			<p class="author">F. Scott Fitzgerald</p>
+			<br>
+			<button class="read-button">Read</button>
+			<button class="download-button">Download</button>
+		</div>
+			<div class="ebook-grid-items">
+		<img src="images/1984.jpeg" alt="book 6">
+			<h2 class="title">1984</h2>
+			<hr>
+			<p class="genre">others</p>
+			<hr>
+			<p class="author">George Orwell</p>
+			<br>
+			<button class="read-button">Read</button>
+			<button class="download-button">Download</button>
+		</div>
+		<div class="ebook-grid-items">
+		<img src="images/TLTWATW.jpg" alt="book 6">
+			<h2 class="title">The Lion, the Witch and the Wardrobe</h2>
+			<hr>
+			<p class="genre">Fantasy</p>
+			<hr>
+			<p class="author">C.S. Lewis</p>
+			<br>
+			<button class="read-button">Read</button>
+			<button class="download-button">Download</button>
+		</div>
+		<div class="ebook-grid-items">
+		<img src="images/TDVC.jpg" alt="book 6">
+			<h2 class="title">The Da Vinci Code</h2>
+			<hr>
+			<p class="genre">mystery</p>
+			<hr>
+			<p class="author">Dan Brown</p>
+			<br>
+			<button class="read-button">Read</button>
+			<button class="download-button">Download</button>
+		</div>
+		<div class="ebook-grid-items">
+		<img src="images/WH.jpg" alt="book 6">
+			<h2 class="title">Wuthering Heights</h2>
+			<hr>
+			<p class="genre">romance</p>
+			<hr>
+			<p class="author">Emily Bronte</p>
+			<br>
+			<button class="read-button">Read</button>
+			<button class="download-button">Download</button>
+		</div>
+		<div class="ebook-grid-items">
+		<img src="images/JE.jpg" alt="book 6">
+			<h2 class="title">Jane Eyre</h2>
+			<hr>
+			<p class="genre">romance</p>
+			<hr>
+			<p class="author">Charlotte Bonte</p>
+			<br>
+			<button class="read-button">Read</button>
+			<button class="download-button">Download</button>
+		</div>
+		<div class="ebook-grid-items">
+		<img src="images/MD.jpg" alt="book 6">
+			<h2 class="title">Moby-Dick</h2>
+			<hr>
+			<p class="genre">Adventure</p>
+			<hr>
+			<p class="author">Herman Melville</p>
+			<br>
+			<button class="read-button">Read</button>
+			<button class="download-button">Download</button>
+		</div>
+			
+		</div>
+	</div>
+<script>
+	// Get the ebook grid container
+const ebookGrid = document.querySelector('.ebook-grid');
+
+// Get the filter options
+const filterOptions = document.querySelectorAll('.filter-options input[type="radio"]');
+
+// Add event listener to filter options
+filterOptions.forEach(option => {
+  option.addEventListener('change', () => {
+    const selectedFilter = option.value;
+    filterEbookGridItems(selectedFilter);
+  });
+});
+
+// Function to filter ebook grid items
+function filterEbookGridItems(filter) {
+  const ebookGridItems = ebookGrid.querySelectorAll('.ebook-grid-items');
+  ebookGridItems.forEach(item => {
+    const genre = item.querySelector('.genre').textContent.toLowerCase();
+    if (filter === 'romance' && genre === 'romance') {
+      item.style.display = 'block';
+    } else if (filter === 'mystery' && genre === 'mystery') {
+      item.style.display = 'block';
+    } else if (filter === 'triller' && genre === 'triller') {
+      item.style.display = 'block';
+    } else if (filter === 'biography' && genre === 'biography') {
+      item.style.display = 'block';
+    } else if (filter === 'history' && genre === 'history') {
+      item.style.display = 'block';
+    } else if (filter === 'science-fiction' && genre === 'science-fiction') {
+      item.style.display = 'block';
+    } else if (filter === 'adventure' && genre === 'adventure') {
+      item.style.display = 'block';
+    } else if (filter === 'fantasy' && genre === 'fantasy') {
+      item.style.display = 'block';
+    } else if (filter === 'horror' && genre === 'horror'){
+      item.style.display = 'block';
+    } else if (filter === 'history' && genre === 'history'){
+      item.style.display = 'block';
+    } else if (filter === 'science' && genre === 'science'){
+      item.style.display = 'block';
+    } else if (filter === 'business' && genre === 'business'){
+      item.style.display = 'block';
+    } else if (filter === 'poetry' && genre === 'poetry'){
+      item.style.display = 'block';
+    } else if (filter === 'comic' && genre === 'comic'){
+      item.style.display = 'block';
+    } else if (filter === 'drama' && genre === 'drama'){
+      item.style.display = 'block';
+    } else if (filter === 'classic' && genre === 'classic'){
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+const fictionDropdown = document.querySelector('.fiction-dropdown')
+const fictionButton = document.querySelector('.fiction-button')
+
+fictionButton.addEventListener('click', () => {
+	fictionDropdown.style.display = "block"
+})
+
+const nonFictionDropdown = document.querySelector('.non-fiction-dropdown')
+const nonFictionButton = document.querySelector('.non-fiction-button')
+
+nonFictionButton.addEventListener('click', () => {
+	nonFictionDropdown.style.display = "block"
+})
+
+const othersDropdown = document.querySelector('.others-dropdown')
+const othersButton = document.querySelector('.others-button')
+
+othersButton.addEventListener('click', () => {
+	othersDropdown.style.display = "block"
+})
+
+document.addEventListener('click', (event) => {
+  if (!fictionButton.contains(event.target) && !fictionDropdown.contains(event.target)) {
+    fictionDropdown.style.display = "none"
+  }
+});
+
+document.addEventListener('click', (event) => {
+	if (!nonFictionButton.contains(event.target) && !nonFictionDropdown.contains(event.target)) {
+		nonFictionDropdown.style.display = "none"
+	}
+});
+
+document.addEventListener('click', (event) => {
+	if (!othersButton.contains(event.target) && !othersDropdown.contains(event.target)) {
+		othersDropdown.style.display = "none"
+	}
+});
+
+const menuButton = document.getElementById('menu-button');
+const sidebar = document.querySelector('.sidebar');
+
+menuButton.addEventListener('click', () => {
+	sidebar.classList.toggle('show')
+});
+
+document.addEventListener('click', (event) => {
+if (!menuButton.contains(event.target) && !sidebar.contains(event.target)) {
+	sidebar.classList.remove('show')
+}
+})
+
+
+</script>
+</body>
+</html>

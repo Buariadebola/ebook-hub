@@ -89,17 +89,8 @@ nav:hover p{
 	display: none;
 }
 @media only screen and (max-width:768px) {
-	nav:hover{
-		text-align: center;
-	}
-	nav:hover a{
-		margin-right: 40px;
-	}
-}
-@media only screen and (max-width:420px) {
-	nav:hover a{
-		margin-right: 20px;
-		font-size: 12px;
+	nav{
+		display: none;
 	}
 }
 nav p{
@@ -265,15 +256,21 @@ nav img{
 		height: 30px;
 		display: flex;
 		margin: 0 auto;
-		background-color: blue;
-		color: white;
-		border: 0;
+		background-color: white;
+		color: black;
+		border: 2px solid black;
+	}
+	.sidebar button:hover{
+		background-color: rgb(142, 142, 142);
 	}
 	.sidebar.show{
 		right: 0;
 	}
 }
 #menu-button{
+	display: none;
+}
+.back-button{
 	display: none;
 }
 @media only screen and (max-width:768px) {
@@ -289,6 +286,28 @@ nav img{
 	#menu-button img{
 		width: 32px;
 	}
+	#menu-button:hover{
+	background-color: #1abc9c;
+	border: 1px solid black;
+}
+	.back-button{
+	z-index: 1;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	width: 35px;
+	height: 35px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.back-button:hover{
+	background-color: rgb(195, 0, 255);
+	border: 1px solid black;
+}
+.back-button img{
+	width: 21px;
+}
 }
 	</style>
 </head>
@@ -298,6 +317,7 @@ nav img{
 	<a href="profile.html">MY PROFILE</a>
 	<p><img src="images/down.png" alt=""></p>
 </nav>
+<button class="back-button"><a href="home.html"><img src="images/back.png" alt=""></a></button>
 <button id="menu-button"><img src="images/menu1.png"></button>
 <body class="genre-body">
 	<div class="genre-page">

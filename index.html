@@ -327,8 +327,20 @@ input{
 	margin: 10px;
 }
 .footer-column h4{
+	font-family: Arial, Helvetica, sans-serif;
 	font-weight: bold;
 	margin-bottom: 10px;
+}
+@media only screen and (max-width:768px) {
+	.footer-column h4{
+		font-size: 13px;
+	}
+	.footer-column p{
+		font-size: 12px;
+	}
+	.footer-column a{
+		font-size: 12px;
+	}
 }
 .footer-column ul{
 	list-style: none;
@@ -340,7 +352,17 @@ input{
 }
 .footer-column a{
 	text-decoration: none;
-	color: #337ab7;
+	color: rgb(28, 169, 0);
+	font-family: Arial, Helvetica, sans-serif;
+}
+.footer-column a:hover{
+	color: white;
+}
+.footer-column button{
+	border: 1px solid black;
+}
+.footer-column button:hover{
+	background-color: rgb(28, 169, 0);
 }
 .footer-column input{
 	margin-bottom: 5px;
@@ -463,9 +485,9 @@ input{
 				<div class="footer-column">
 					<h4>Stay connected</h4>
 					<ul>
-						<li><a href="" >twitter</a></li>
-						<li><a href="">facebook</a></li>
-						<li><a href="">instagram</a></li>
+						<li><a href="" >Twitter</a></li>
+						<li><a href="">Facebook</a></li>
+						<li><a href="">Instagram</a></li>
 					</ul>
 				</div>
 				<div class="footer-column">

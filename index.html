@@ -3,694 +3,568 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>ebookgenre</title>
+	<title>http://ebookhub.com</title>
 	<style>
-		.genre-body{
+		body{
 	margin: 0;
-	background-image: url('images/ebook.jpg');
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-attachment: fixed;
-
-}
-.genre-page{
-	width: 100%;
-}
-.filter-options input[type="radio"]{
-	display: none;
-}
-.filter-options{
-	display: grid;
-	grid-gap: 10px;
-	grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-	justify-content: space-between;
-	padding: 10px;
-}
-.filter-sort-container{
-	margin-top: 50px;
-	width: 99%;
-	background-color: #fff0cb;
-	border: 2px solid #363146;
-	display: flex;
-}
-.fiction-container{
-	width: 49%;
-}
-.non-fiction-container{
-	width: 28%;
 	padding: 0;
-	margin: 0;
+	background-color: #333;
 }
-.others-container{
-	width: 23%;
-}
-
- h2{
- 	font-family: arial black;
-	text-align: center;
-	font-size: 22px;
-}
-nav{
-	position: fixed;
-	overflow: hidden;
-	z-index: 2;
-	top: 0;
-	margin: 0 auto;
-	width: 15%;
-	height: 11px;
-	padding-top: 2px;
-	text-align: center;
-	background-color: rgb(195, 0, 255);
-	border-radius: 0 0 10px 10px;
-	font-family: arial;
-	transition: 0.5s ;
-	
-}
-nav a{
-	display: none;
-}
-nav:hover {
-	background-color: #363146;
-	width: 100%;
-	height: 40px;
-	border-radius: 0 0 0 0;
-	padding-top: 20px;
-	justify-content:space-between;
-}
-nav:hover a{
-	font-size: 16px;
-	display: inline;
+.right-column button{
+	font-size: calc(10px + 0.6vw);
+	margin-right: 20px;
 	text-decoration: none;
+	font-family: arial black;
+	color: black;
+}
+.right-column a:hover{
+	font-size: calc(11px + 0.6vw);
+	text-decoration: underline;
+}
+input{
+	width: 100%;
+	padding: 5px;
+
+}
+.nav-wrapper{
+	display: flex;
+	width: 100%;
+	height: 70px;
+}
+.left-column{
+	text-align: left;
+	width: 40%;
+	margin-left: 10px;
+}
+.left-column h2{
+	font-size: calc(12px + 1vw);
 	color: white;
-	margin-right: 100px;
-	transition: 0.5s ease-in-out;
+	font-family: cursive;
+	margin-left: 10px;
 }
-nav:hover p{
-	display: none;
+.right-column{
+	display: flex;
+	width: 60%;
+	align-items: center;
+	justify-content: right;
+	margin-right: 20px;
 }
-@media only screen and (max-width:768px) {
-	nav{
-		display: none;
-	}
-}
-nav p{
-	font-size: 10px;
-	margin-top: 0;
-}
-nav:hover a:hover {
-	font-size: 14px;
-	color: #1abc9c;
-}
-.ebook-grid-items {
+#login-box{
+	margin: 20px auto;
+	padding: 30px;
+	padding-top:50px;
 	position: relative;
-	background-color: floralwhite;
-	border: 2px solid #363146;
-	margin: 0 auto;
-	padding: 20px;
-	width: 70%;
-	transition: 0.4s ease-in-out;
+	width: 35%;
+	height: 300px;
+	background-color: rgb(27, 27, 27);
+	border: 3px solid transparent;
+	border-image: conic-gradient(from var(--angle), blue, red, blue, red) 1 1 1 1;
+	justify-content: center;
+	align-items: center;
+	display: none;
+	transition: transform .5s ease,height .2s ease;
+	animation: 3s spin linear infinite;
+	color: white;
+
 }
-.ebook-grid-items:hover {
-	background-color: rgb(255, 255, 255);
-	padding: 15px;
-	border: 1px solid #363146;
-}
-.ebook-grid-items img {
-	width: 90%;
-	max-height: 200px;
-	object-fit: cover;
-	border-radius: 10px 10px 0 0;
-}
-.ebook-grid-items p{
-	margin: 0;
-	padding: 0;
-	color:#363146;
-	text-align: left;
-	font-family: arial;
-}
-.ebook-grid-items h2{
-	margin: 0;
-	padding: 0;
-	color: #363146;
-	text-align: left;
+        #login-box h1{
+            color: white;
+        }
+        @property --angle{
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+        @keyframes spin{
+            from{
+                --angle:0deg;
+            }
+            to{
+                --angle:360deg;
+            }
+        }
+#login-box label{
+	border: none;
+	color: white;
 	font-size: 20px;
-	font-family: arial;
 }
-.ebook-grid{
-	padding-top: 40px;
-	width: 95%;
-	margin: 0 auto;
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-	grid-gap: 10px;
+.input-box{
+	border-bottom: 3px solid white;
+	margin-bottom: 10px;
 }
-@media only screen and (max-width:768px) {
-	.ebook-grid{
-		grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+#input-box a{
+	color: blue;
+}
+.input-box input{
+	font-size: 20px;
+	caret-color: #f44336;
+	color: white;
+	border: none;
+	background: transparent;
+	width: 100%;
+	outline: none;
+}
+#fg{
+	margin-left: 280px;
+}
+#login-box button{
+	margin-top: 10px;
+	background-image: linear-gradient(to right, red, blue);
+	width: 100%;
+	height: 30px;
+	font-size: 15px;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	color: white;
+}
+#registeration-box {
+	margin: 20px auto;
+	padding: 30px;
+	padding-top:10px;
+	padding-bottom:50px;
+	width: 35%;
+	height: 320px;
+	background-color:rgb(27, 27, 27);
+	border: 3px solid transparent;
+	border-image: conic-gradient(from var(--angle), blue, red, blue, red) 1 1 1 1;
+	justify-content: center;
+	align-items: center;
+	display: none;
+	position: relative;
+	animation: 3s spin linear infinite ;
+}
+#registeration-box label{
+	border: none;
+	color: white;
+	font-size: 20px;
+}
+@media only screen and (max-width:500px){
+	#registeration-box {
+		width: 70%;
 	}
-	.ebook-grid-items h2{
-		font-size: 17px;
+	#login-box{
+		width: 70%;
 	}
-	.ebook-grid-items:hover h2{
+	#registeration-box label{
 		font-size: 15px;
 	}
-	.ebook-grid-items:hover p{
-		font-size: 13px;
+	#login-box label {
+		font-size: 15px;
 	}
-	.ebook-grid-items:hover button{
-		font-size: 12px;
+	.input-box input{
+		font-size: 17px;
 	}
 }
-.ebook-grid-items button{
-	display: inline;
-	background-color: #363146;
-	color: white;
-	font-size: 12px;
-}
-.read-button{
-	position: absolute;
-	bottom: 10px;
-	left: 5%;
-}
-.download-button{
-	position: absolute;
-	bottom: 10px;
-	right: 5%;
-}
-.filter-options label{
-	padding: 5px 10px 5px 10px;
-	text-align: center;
-	border: 1px solid black;
-	position: relative;
-	background-color: #1abc9c;
-	z-index: 1;
-}
-.filter-options label::after{
-	content: '';
-	position: absolute;
-	background-color: rgb(195, 0, 255);
+#registeration-box button{
+	margin-top: 10px;
+	background-image: linear-gradient(to right, red, blue);
 	width: 100%;
-	height: 100%;
+	height: 30px;
+	font-size: 15px;
+	align-items: center;
+	justify-content: center;
+	border-radius: 10px;
+	color: white;
+}
+.back{
+	height: 34px;
+	width: 34px;
+	color: white;
+	float: left;
+	font-size: 28px;
+	cursor: pointer;
+	background-color: #555;
+	justify-content: center;
+	align-items: center;
 	top: 0;
 	left: 0;
-	z-index: -1;
-	transition: 0.4s ease-in-out;
-}
-.filter-options label:hover::after{
-	height: 0%;
-}
-nav img{
-	color: white;
-	width: 10px;
-	height: 10px;
-}
-@media only screen and (max-width:768px) {
-	.filter-options{
-	grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-	}
-	.filter-sort-container{
-		display: none;
-	}
-	.filter-options label{
-		font-size: 12px;
-		padding: 5px 10px 5px 10px;
-	}
-}
-.sidebar{
-	padding: 100px 10px 0 10px;
-	z-index: 1;
-	position: fixed;
-	background-color: rgb(54, 54, 54);
-	top:0;
-	right: 0;
-	height: 100%;
-	width: 35%;
-	display: none;
-}
-@media only screen and (max-width:768px) {
-	.fiction-dropdown{
-		display: none;
-	}
-	.non-fiction-dropdown{
-		display: none;
-	}
-	.others-dropdown{
-		display: none;
-	}
-	.filter-options input{
-		display: flex;
-		margin: 0 auto;
-	}
-
-	.sidebar{
-	display: block;
-	right: -40%;
-	transition: 1s ease-in-out;
-	}
-	.sidebar button{
-		padding: 10px 0 10px 0;
-		justify-content: center;
-		align-items: center;
-		text-align: center;
-		width: 75%;
-		height: 30px;
-		display: flex;
-		margin: 0 auto;
-		background-color: white;
-		color: black;
-		border: 2px solid black;
-	}
-	.sidebar button:hover{
-		background-color: rgb(142, 142, 142);
-	}
-	.sidebar.show{
-		right: 0;
-	}
-}
-#menu-button{
-	display: none;
-}
-.back-button{
-	display: none;
-}
-@media only screen and (max-width:768px) {
-	#menu-button{
-		z-index: 1;
-		padding: 0;
-		display: block;
-		position: absolute;
-		top: 5px;
-		right: 5px;
-		width: 35px;
-	}
-	#menu-button img{
-		width: 32px;
-	}
-	#menu-button:hover{
-	background-color: #1abc9c;
-	border: 1px solid black;
-}
-	.back-button{
-	z-index: 1;
 	position: absolute;
-	top: 5px;
-	left: 5px;
-	width: 35px;
-	height: 35px;
+	display: flex;
+	border-radius:0 0 10px 0;
+}
+.back:hover{
+	height: 34px;
+	width: 34px;
+	color: black;
+	float: left;
+	font-size: 28px;
+	cursor: pointer;
+	background-color: whitesmoke;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	left: 0;
+	position: absolute;
+	display: flex;
+	border-radius:0 0 10px 0;
+}
+#login-button{
+	cursor: pointer;
+}
+#login-link{
+	cursor: pointer;
+}
+#login-box p{
+	text-align: center;
+}
+#registeration-box p{
+	text-align: center;
+}
+#logo{
+	width: 100px;
+	height: 100px;
+}
+
+#registeration-box h1{
+	font-size: 40px;
+	color: white;
+	text-align: center;
+}
+.alert-message {
+	background-color: #f44336;
+	color: #fff;
+	padding: 10px;
+	position: absolute;
+	top: 1%;
+	left: 50%;
+}
+.welcome-alert {
+	background-color: #f44336;
+	color: #fff;
+	padding: 10px;
+	position: absolute;
+	top: 1%;
+	left: 50%;
+}
+.hero {
+	background-color: #f7f7f7;
+	padding-bottom: 40px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-.back-button:hover{
-	background-color: rgb(195, 0, 255);
-	border: 1px solid black;
+.hero-content {
+	width: 40%;
+	margin-right: 20px;
 }
-.back-button img{
-	width: 21px;
+.hero-content h1 {
+	font-size: calc(36px + 1vw);
+	margin-bottom: 10px;
+	font-family: algerian;
 }
+.hero-image{
+	align-content: center;
+	display: flex;
+	width: 60%;
+}
+.cta {
+	padding: 5px 0 5px 0;
+	margin-left: 5px;
+	text-align: center;
+	width: 50%;
+	height: auto;
+	background-color: rgb(28, 169, 0);
+	color: #fff;
+	font-size: calc(7px + 0.6vw);
+	margin-top: 5px;
+	cursor: pointer;
+	transition: 0.4s ease-in-out;
+}
+.cta:hover {
+	background-color: #555;
+}
+.ctadownload {
+	margin-left: 5px;
+	text-align: center;
+	width: 50%;
+	height: 25px;
+	background-color: rgb(28, 169, 0);
+	color: #fff;
+	font-size: calc(7px + 0.6vw);
+	margin-top: 5px;
+	cursor: pointer;
+	transition: 0.4s ease-in-out;
+}
+.ctadownload:hover {
+	background-color: #555;
+}
+.hero-image {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+} 
+.hero-image img {
+	justify-content: center;
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+	border-radius: 10px;
+}
+.hero-content h1{
+	font-family: 'Courier New', Courier, monospace;
+	padding-left: 30px;
+	color: rgb(28, 169, 0);
+}
+.right-column2 h1{
+	text-align: center;
+}
+.footer-container{
+	background-color: #333;
+	padding: 40px 0;
+	text-align: center;
+}
+.footer-columns{
+	color: white;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+.footer-column {
+	flex-basis: 25%;
+	margin: 10px;
+}
+.footer-column h4{
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+.footer-column ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.footer-column li{
+	margin-bottom: 10px;
+}
+.footer-column a{
+	text-decoration: none;
+	color: #337ab7;
+}
+.footer-column input{
+	margin-bottom: 5px;
+}
+.hero-container1{
+	width: 26%;
+	display: flex;
+	flex-direction: column;
+	padding-top: 70px;
+}
+.hero-container2{
+	width: 26%;
+	display: flex;
+	flex-direction: column;
+	padding-top: 40px;
+}
+.hero-container3{
+	width: 26%;
+	display: flex;
+	flex-direction: column;
+	padding-right: 5px;
+}
+.right-column2{
+	display: flex;
+	flex-direction: column;
+}
+.right-column2 h1{
+	font-family: arial;
+	font-size: calc(12px + 0.7vw);
+}
+@media only screen and (max-width:600px) {
+	.hero-container1, .hero-container3{
+		display: none;
+	}
+	.hero-container2{
+		width: 70%;
+	}
+	.hero-content h1{
+		font-size:calc(30px + 1vw);
+	}
+}
+#log-button:hover{
+	background-color: rgb(38, 227, 0);
+	font-size: 12px;
 }
 	</style>
 </head>
-<nav>
-	<a href="home.html">HOME</a>
-	<a href="blog.html">LATEST</a>
-	<a href="profile.html">MY PROFILE</a>
-	<p><img src="images/down.png" alt=""></p>
-</nav>
-<button class="back-button"><a href="home.html"><img src="images/back.png" alt=""></a></button>
-<button id="menu-button"><img src="images/menu1.png"></button>
-<body class="genre-body">
-	<div class="genre-page">
-		<div class="filter-sort-container">
-			<div class="fiction-container">
-				<h2>Fiction</h2>
-				<div class="filter-options">
-					<label>
-						<input type="radio" name="genre" value="romance">Romance
-					</label>
-					<label>
-						<input type="radio" name="genre" value="mystery">Mystery
-					</label>
-					<label>
-						<input type="radio" name="genre" value="triller">Triller
-					</label>
-					<label>
-						<input type="radio" name="genre" value="science-fiction">Sci-Fi
-					</label>
-					<label>
-						<input type="radio" name="genre" value="adventure">Adventure
-					</label>
-					<label>
-						<input type="radio" name="genre" value="horror">Horror
-					</label>
-					<label>
-						<input type="radio" name="genre" value="fantasy">fantasy
-					</label>
-					<label>
-						<input type="radio" name="genre" value="classic">classic
-					</label>
-				</div>
+<body>
+<div id="website-content">
+	<header>
+		<nav class="nav-wrapper">
+			<div class="left-column">
+				<h2>eBook Hub</h2>
 			</div>
-			<div class="non-fiction-container">
-				<h2>Non-fiction</h2>
-				<div class="filter-options">
-					<label>
-						<input type="radio" name="genre" value="biography">Biography
-					</label>
-					<label>
-						<input type="radio" name="genre" value="history">History
-					</label>
-					<label>
-						<input type="radio" name="genre" value="science">Science
-					</label>
-					<label>
-						<input type="radio" name="genre" value="business">business
-					</label>
-				</div>
+			<div class="right-column">
+				<button id="log-button" href="">Login</button>
 			</div>
-			<div class="others-container">
-				<h2>Others</h2>
-				<div class="filter-options">
-					<label>
-						<input type="radio" name="genre" value="poetry">poetry
-					</label>
-					<label>
-						<input type="radio" name="genre" value="comic">comic
-					</label>
-					<label>
-						<input type="radio" name="genre" value="drama">drama
-					</label>
-					<label>
-						<input type="radio" name="genre" value="others">others
-					</label>
-				</div>
+		</nav>
+	</header>
+	<main>
+		<section class="hero" id="hero">
+			<div class="hero-content">
+				<h1>EXPLORE A WORLD OF EBOOKS</h1>
 			</div>
-		</div>
-		<div class="sidebar">
-			<button class="fiction-button">Fiction</button>
-				<div class="fiction-dropdown">
-					<div class="filter-options">
-						<label>
-							<input type="radio" name="genre" value="romance">Romance
-						</label>
-						<label>
-							<input type="radio" name="genre" value="mystery">Mystery
-						</label>
-						<label>
-							<input type="radio" name="genre" value="triller">Triller
-						</label>
-						<label>
-							<input type="radio" name="genre" value="science-fiction">Sci-Fi
-						</label>
-						<label>
-							<input type="radio" name="genre" value="adventure">Adventure
-						</label>
-						<label>
-							<input type="radio" name="genre" value="horror">Horror
-						</label>
-						<label>
-							<input type="radio" name="genre" value="fantasy">fantasy
-						</label>
-						<label>
-							<input type="radio" name="genre" value="classic">classic
-						</label>
-					</div>
-				</div>
-				<br>
-				<br>
-			<button class="non-fiction-button">Non-fiction</button>
-			<div class="non-fiction-dropdown">
-				<div class="filter-options">
-					<label>
-						<input type="radio" name="genre" value="biography">Biography
-					</label>
-					<label>
-						<input type="radio" name="genre" value="history">History
-					</label>
-					<label>
-						<input type="radio" name="genre" value="science">Science
-					</label>
-					<label>
-						<input type="radio" name="genre" value="business">business
-					</label>
-				</div>
+			<div class="right-column2">
+			<h1>Featured E-book</h1>
+			<div class="hero-image">
+				<div class="hero-container1"><img src="images/WH.jpg"><button class="cta">Read Now</button><button class="ctadownload">Download</button></div>
+				<div class="hero-container2"><img src="images/TLOTR.jpeg"><button class="cta">Read Now</button><button class="ctadownload">Download</button></div>
+				<div class="hero-container3"><img src="images/THG.jpeg"><button class="cta">Read Now</button><button class="ctadownload">Download</button></div>
 			</div>
-			<br>
-			<br>
-			<button class="others-button">others</button>
-			<div class="others-dropdown">
-				<div class="filter-options">
-					<label>
-						<input type="radio" name="genre" value="poetry">poetry
-					</label>
-					<label>
-						<input type="radio" name="genre" value="comic">comic
-					</label>
-					<label>
-						<input type="radio" name="genre" value="drama">drama
-					</label>
-					<label>
-						<input type="radio" name="genre" value="others">others
-					</label>
-				</div>
 			</div>
-		</div>
-		<div class="ebook-grid">
-			<div class="ebook-grid-items">
-			<img src="images/p&p.jpeg" alt="blog post image">
-			<h2 class="title">Pride and Prejudice</h2>
-			<hr>
-			<p class="genre">romance</p>
-			<hr>
-			<p class="author">Jane Austen</p>
-			<br>
-			<button class="read-button">Read</button>
-			<button class="download-button">Download</button>
-		</div>
-		<div class="ebook-grid-items">
-		<img src="images/TKAM.jpeg" alt="book 2">
-			<h2 class="title">To kill a Mockingbird</h2>
-			<hr>
-			<p class="genre">classic</p>
-			<hr>
-			<p class="author">Harper Lee</p>
-			<br>
-			<button class="read-button">Read</button>
-			<button class="download-button">Download</button>
-		</div>
-			<div class="ebook-grid-items">
-		<img src="images/TLOTR.jpeg" alt="book 3">
-			<h2 class="title">The Lord of the Rings</h2>
-			<hr>
-			<p class="genre">fantasy</p>
-			<hr>
-			<p class="author">J.R.R. Tolkien</p>
-			<br>
-			<button class="read-button">Read</button>
-			<button class="download-button">Download</button>
-			</div>
-			<div class="ebook-grid-items">
-		<img src="images/THG.jpeg" alt="book 4">
-			<h2 class="title">The Hungary Games</h2>
-			<hr>
-			<p class="genre">others</p>
-			<hr>
-			<p class="author">Suzanne Collins</p>
-			<br>
-			<button class="read-button">Read</button>
-			<button class="download-button">Download</button>
-		</div>
-			<div class="ebook-grid-items">
-		<img src="images/TGG.jpg" alt="book 5">
-			<h2 class="title">The Great Gatsby</h2>
-			<hr>
-			<p class="genre">classic</p>
-			<hr>
-			<p class="author">F. Scott Fitzgerald</p>
-			<br>
-			<button class="read-button">Read</button>
-			<button class="download-button">Download</button>
-		</div>
-			<div class="ebook-grid-items">
-		<img src="images/1984.jpeg" alt="book 6">
-			<h2 class="title">1984</h2>
-			<hr>
-			<p class="genre">others</p>
-			<hr>
-			<p class="author">George Orwell</p>
-			<br>
-			<button class="read-button">Read</button>
-			<button class="download-button">Download</button>
-		</div>
-		<div class="ebook-grid-items">
-		<img src="images/TLTWATW.jpg" alt="book 6">
-			<h2 class="title">The Lion, the Witch and the Wardrobe</h2>
-			<hr>
-			<p class="genre">Fantasy</p>
-			<hr>
-			<p class="author">C.S. Lewis</p>
-			<br>
-			<button class="read-button">Read</button>
-			<button class="download-button">Download</button>
-		</div>
-		<div class="ebook-grid-items">
-		<img src="images/TDVC.jpg" alt="book 6">
-			<h2 class="title">The Da Vinci Code</h2>
-			<hr>
-			<p class="genre">mystery</p>
-			<hr>
-			<p class="author">Dan Brown</p>
-			<br>
-			<button class="read-button">Read</button>
-			<button class="download-button">Download</button>
-		</div>
-		<div class="ebook-grid-items">
-		<img src="images/WH.jpg" alt="book 6">
-			<h2 class="title">Wuthering Heights</h2>
-			<hr>
-			<p class="genre">romance</p>
-			<hr>
-			<p class="author">Emily Bronte</p>
-			<br>
-			<button class="read-button">Read</button>
-			<button class="download-button">Download</button>
-		</div>
-		<div class="ebook-grid-items">
-		<img src="images/JE.jpg" alt="book 6">
-			<h2 class="title">Jane Eyre</h2>
-			<hr>
-			<p class="genre">romance</p>
-			<hr>
-			<p class="author">Charlotte Bonte</p>
-			<br>
-			<button class="read-button">Read</button>
-			<button class="download-button">Download</button>
-		</div>
-		<div class="ebook-grid-items">
-		<img src="images/MD.jpg" alt="book 6">
-			<h2 class="title">Moby-Dick</h2>
-			<hr>
-			<p class="genre">Adventure</p>
-			<hr>
-			<p class="author">Herman Melville</p>
-			<br>
-			<button class="read-button">Read</button>
-			<button class="download-button">Download</button>
-		</div>
-			
-		</div>
+		</section>
+	</main>
 	</div>
-<script>
-	// Get the ebook grid container
-const ebookGrid = document.querySelector('.ebook-grid');
+	<div id="login-box">
+		<h1>Login</h1>
+		<form id="login-form">
+		<div class="input-box">
+		<label >Username
+		<input id="username" type="text" name="username">
+		</label>
+		</div>
+		<div class="input-box">
+		<label>Password
+		<input id="password" type="password" name="password">
+		</label>
+		</div>
+		<button id="login-button">Login</button>
+		<p>Don't have an account?<a href="" id="register-link">register</a></p>
+	</form>
+</div>
+	<form id="registeration-box">
+		<span class="back" id="back">&lArr;</span>
+		<h1>Register</h1>
+		<div class="input-box">
+		<label>Username
+		<input type="text" autocomplete="name" id="name" required>
+		</label>
+		</div>
+		<div class="input-box">
+		<label >Email
+		<input type="email" autocomplete="email" id="email" required>
+		</label>
+		</div>
+		<div class="input-box">
+		<label>Password
+		<input type="password" id="password" required>
+		</label>
+		</div>
+		<button id="registeration-button">Register</button>
+	</form>
+	<footer>
+		<div class="footer-container" id="footer-container">
+			<div class="footer-columns">
+				<div class="footer-column">
+					<h4>Copyright Information</h4>
+					<p>&copy;2025 E-Book Hub</p>
+				</div>
+				<div class="footer-column">
+					<h4>Stay connected</h4>
+					<ul>
+						<li><a href="" >twitter</a></li>
+						<li><a href="">facebook</a></li>
+						<li><a href="">instagram</a></li>
+					</ul>
+				</div>
+				<div class="footer-column">
+					<h4>Newsletter Signup</h4>
+					<form>
+						<input type="email" placeholder="Enter your email address">
+						<button type="submit">Subscribe</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script>
+		const loginBox = document.getElementById('login-box');
+const registerationBox = document.getElementById('registeration-box');
+const registerLink = document.getElementById('register-link');
+const loginLink = document.getElementById('login-link');
+const registerationButton = document.getElementById('registeration-button');
 
-// Get the filter options
-const filterOptions = document.querySelectorAll('.filter-options input[type="radio"]');
+registerationButton.addEventListener('click', (e) => {
+	e.preventDefault();
 
-// Add event listener to filter options
-filterOptions.forEach(option => {
-  option.addEventListener('change', () => {
-    const selectedFilter = option.value;
-    filterEbookGridItems(selectedFilter);
-  });
+	const name = document.getElementById('name').value.trim();
+	const email = document.getElementById('email').value.trim();
+	const password = document.getElementById('password').value.trim();
+
+	if (name === '' || email === '' || password === '') {
+		alert('Please fill in all required fields');
+	} else {
+		alert('registeration successful!');
+	}
+})
+
+
+
+registerLink.addEventListener('click', (e) => {
+	e.preventDefault();
+	loginBox.style.display = 'none'
+	registerationBox.style.display = 'block';
 });
 
-// Function to filter ebook grid items
-function filterEbookGridItems(filter) {
-  const ebookGridItems = ebookGrid.querySelectorAll('.ebook-grid-items');
-  ebookGridItems.forEach(item => {
-    const genre = item.querySelector('.genre').textContent.toLowerCase();
-    if (filter === 'romance' && genre === 'romance') {
-      item.style.display = 'block';
-    } else if (filter === 'mystery' && genre === 'mystery') {
-      item.style.display = 'block';
-    } else if (filter === 'triller' && genre === 'triller') {
-      item.style.display = 'block';
-    } else if (filter === 'biography' && genre === 'biography') {
-      item.style.display = 'block';
-    } else if (filter === 'history' && genre === 'history') {
-      item.style.display = 'block';
-    } else if (filter === 'science-fiction' && genre === 'science-fiction') {
-      item.style.display = 'block';
-    } else if (filter === 'adventure' && genre === 'adventure') {
-      item.style.display = 'block';
-    } else if (filter === 'fantasy' && genre === 'fantasy') {
-      item.style.display = 'block';
-    } else if (filter === 'horror' && genre === 'horror'){
-      item.style.display = 'block';
-    } else if (filter === 'history' && genre === 'history'){
-      item.style.display = 'block';
-    } else if (filter === 'science' && genre === 'science'){
-      item.style.display = 'block';
-    } else if (filter === 'business' && genre === 'business'){
-      item.style.display = 'block';
-    } else if (filter === 'poetry' && genre === 'poetry'){
-      item.style.display = 'block';
-    } else if (filter === 'comic' && genre === 'comic'){
-      item.style.display = 'block';
-    } else if (filter === 'drama' && genre === 'drama'){
-      item.style.display = 'block';
-    } else if (filter === 'classic' && genre === 'classic'){
-      item.style.display = 'block';
-    } else {
-      item.style.display = 'none';
-    }
-  });
-}
+document.querySelector(".back").addEventListener("click", function () {
+	popup.style.display = "block";
+	registerationBox.style.display = 'none';
 
-const fictionDropdown = document.querySelector('.fiction-dropdown')
-const fictionButton = document.querySelector('.fiction-button')
-
-fictionButton.addEventListener('click', () => {
-	fictionDropdown.style.display = "block"
-})
-
-const nonFictionDropdown = document.querySelector('.non-fiction-dropdown')
-const nonFictionButton = document.querySelector('.non-fiction-button')
-
-nonFictionButton.addEventListener('click', () => {
-	nonFictionDropdown.style.display = "block"
-})
-
-const othersDropdown = document.querySelector('.others-dropdown')
-const othersButton = document.querySelector('.others-button')
-
-othersButton.addEventListener('click', () => {
-	othersDropdown.style.display = "block"
-})
-
-document.addEventListener('click', (event) => {
-  if (!fictionButton.contains(event.target) && !fictionDropdown.contains(event.target)) {
-    fictionDropdown.style.display = "none"
-  }
 });
 
-document.addEventListener('click', (event) => {
-	if (!nonFictionButton.contains(event.target) && !nonFictionDropdown.contains(event.target)) {
-		nonFictionDropdown.style.display = "none"
+
+//Get the popup element
+var popup = document.getElementById("login-box");
+// Get the login form elements
+var loginForm = document.getElementById("login-form");
+var usernameInput = document.getElementById("username");
+var passwordInput = document.getElementById("password");
+var logButton = document.getElementById("log-button");
+var loginButton = document.getElementById('login-button');
+var websiteContent = document.getElementById('website-content');
+var hero = document.getElementById('hero');
+var footer = document.getElementById('footer-container')
+
+logButton.addEventListener('click', () => {
+	popup.style.display = "block";
+	logButton.style.display = "none";
+	hero.style.display = "none";
+	footer.style.display = "none"
+});
+
+var users = {
+	"admin": "passord",
+	"adbuari": "0",
+	"demilade": "0001"
+};
+
+loginButton.addEventListener("click", function (event) {
+	event.preventDefault();
+
+	var username = usernameInput.value;
+	var password = passwordInput.value;
+	if (users[username] === password) {
+		window.location.href = 'home.html'
+		localStorage.setItem("loggedIn", "true");
+		var welcomeAlert = document.createElement("div");
+		welcomeAlert.className = "welcome-alert";
+		welcomeAlert.innerHTML = "login successful";
+		websiteContent.appendChild(welcomeAlert);
+		setTimeout(function () {
+			websiteContent.removeChild(welcomeAlert);
+		}, 2000);
+	} else {
+		var alertMessage = document.createElement("div");
+		alertMessage.className = "alert-message";
+		alertMessage.innerHTML = "Invalid username or password";
+		popup.appendChild(alertMessage);
+		setTimeout(function () {
+			popup.removeChild(alertMessage);
+		}, 3000);
 	}
 });
 
-document.addEventListener('click', (event) => {
-	if (!othersButton.contains(event.target) && !othersDropdown.contains(event.target)) {
-		othersDropdown.style.display = "none"
-	}
-});
-
-const menuButton = document.getElementById('menu-button');
-const sidebar = document.querySelector('.sidebar');
-
-menuButton.addEventListener('click', () => {
-	sidebar.classList.toggle('show')
-});
-
-document.addEventListener('click', (event) => {
-if (!menuButton.contains(event.target) && !sidebar.contains(event.target)) {
-	sidebar.classList.remove('show')
-}
-})
-
-
-</script>
+	</script>
 </body>
 </html>
